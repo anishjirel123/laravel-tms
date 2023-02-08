@@ -21,16 +21,15 @@
       <label for="validationCustom01" class="form-label">First name</label>
       <input type="text" name="title" class="form-control" id="validationCustom01" value="{{$tasks->title}}" required>
     </div>
+    
     <div class="col-md-6">
       <label for="validationCustom02" class="form-label">Decription</label>
       <input type="text" name="description" class="form-control" id="validationCustom02" value="{{$tasks->description}}" required>
-
     </div>
 
     <div class="col-md-6">
       <label for="validationCustom02" class="form-label">Image</label>
       <input type="file" name="img" class="form-control" id="validationCustom02" value="{{$tasks->img}}" required>
-
     </div>
   
     <div class="col-12">

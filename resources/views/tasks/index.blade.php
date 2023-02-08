@@ -9,9 +9,9 @@
   @notifyCss
 </head>
 <body>
-  <x:notify-messages/>
+  <x:notify-messages/> 
   <div class="d-grid gap-2 py-3">
-    <button class="btn btn-warning fs-4 " type="button">Index Tasks</button>
+    <button class="btn btn-warning fs-4 " type="button">Index Manage Tasks</button>
   </div>
 <div class="container py-2">
   <a name="" id="" class="btn btn-primary" href="{{route('task.create')}}" role="button">Add Tasks</a>
@@ -31,9 +31,12 @@
       <tr>
         <th scope="row">{{$loop->iteration}}</th>
         <td>{{$task->title}}</td>
-        <td>{{$task->description}}</td>
+        <td>{{$task->description}}</td> 
         <td><img src="/uploads/{{$task->img}}" width="100" height="100" alt=""></td>
+        @if (Auth::user()->role==1)
         <td>
+            
+         
         <a name="" id="" class="btn btn-primary btn-sm" href="{{route('task.edit', $task->id)}}" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
         <a name="" id="" class="btn btn-success btn-sm" href="{{route('task.show', $task->id)}}" role="button"><i class="fa-solid fa-users-viewfinder"></i></a>
     <!-- Modal trigger button -->
@@ -71,12 +74,9 @@
       const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
     
     </script>
-    
-
           </td>
-
-      </tr>
-        
+          @endif
+      </tr>   
       @endforeach
      
     </table>
@@ -85,50 +85,6 @@
     {{$tasks->links()}}
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  {{-- <table class=" table-hover table-bordered table-sm table-responsive-sm">
-    <thead>
-      <tr>
-        <th scope="col">S.N</th>
-        <th scope="col">Title</th>
-        <th scope="col">Descrption</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-
-    @foreach ($tasks as $task)
-    <tr>
-     <th scope="row">{{$loop->iteration}}</th>
-     <td>{{$task->title }}</td>
-     <td>{{$task->description}} </td>
-     <td>
-     <a href="{{route('task.edit', $task->id)}}" class="btn-primary">Edit </a>
-    <a href="" class="btn-success">View</a>
-    <a href="{{route('task.destor', $task->id)}}" class="btn-danger">Delete</a>
-     </td>
-   </tr>
-    @endforeach
-
-    </tbody>
-  </table> --}}
   <script src="https://kit.fontawesome.com/ecd7f2ff6f.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   @notifyJs

@@ -16,7 +16,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks= new Task;
-        $tasks=$tasks->paginate(5);
+        $tasks=$tasks->paginate(3);
         return view('tasks.index', compact('tasks'));
     }
 
@@ -51,7 +51,7 @@ class TaskController extends Controller
             // image ko lagi ho         
         $fileName = $request->id . "-" . time() . '.' . $request->img->extension();
         $request->img->move(public_path('uploads'), $fileName);
-
+        
         $tasks->title = $request->title;    
         $tasks->description = $request->description;
         $tasks->img = $fileName;

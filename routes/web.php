@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FontendController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,26 +19,35 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// yo xai Route::resource ko center maa rakhaney ko 
+// Route::prefix('admin')->middleware('auth')->group(
+    //     function () {
+    // }
+    // );
+// yo xai Route::resource ko center maa rakhaney ko 
 
+//  FontendController and route
 Route::get('/', function () {
-    return view('auth.login');
-});
+    return view('task');
+}
+);
+Route::get('tasks', [App\Http\Controllers\FontendController::class, 'index']);
+
+Route::prefix('/')->middleware('auth')->group(
+    function () {
+        Route::resource('task', '\App\Http\Controllers\TaskController')->middleware('auth');
+        // Route::resource('gallery', '\App\Http\Controllers\GalleryController');   
+    }
+    );
+ 
 
 
-Route::resource('task', '\App\Http\Controllers\TaskController')->middleware('auth');
 
 
-// Route::resource('gallery', '\App\Http\Controllers\GalleryController');
-
-
-Auth::routes();
-
+// backend route and login
+    Auth::routes();    
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
