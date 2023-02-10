@@ -11,7 +11,7 @@
 </head>
 <body> 
   
-  @foreach ($tasks as $task)
+  @foreach ($Tasks as $task)
   <div class="row">
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="card">

@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 //  FontendController and route
 Route::get('/', function () {
-    return view('task');
+    return view('welcome');
 }
 );
 Route::get('tasks', [App\Http\Controllers\FontendController::class, 'index']);
